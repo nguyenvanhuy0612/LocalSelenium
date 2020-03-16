@@ -1,0 +1,6 @@
+#Sat Mar 14 00:59:01 ICT 2020
+__DEFAULT__=false
+org.eclipse.sdk.Eclipse.master=true
+org.eclipse.sdk.Google.master=true
+org.eclipse.help.ui.localSearch.master=true
+expression=ctrl +

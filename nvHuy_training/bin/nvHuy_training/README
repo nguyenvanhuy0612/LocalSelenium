@@ -1,0 +1,160 @@
+Bài 5: Lập trình hướng đối tượng trong Java
+Java là một ngôn ngữ lập trình hướng đối tượng vì vậy nó cũng hỗ trợ các đặc tính của lập trình hướng đối tượng:
+
+Đa hình (Polymorphism)
+Thừa kế (Inheritance)
+Đóng gói (Encapsulation)
+Trừu tượng (Abstraction)
+Đối tượng trong lập trình Java:
+
+Nếu chúng ta xem xét thực tế chúng ta có thể tìm thấy nhiều đồ vật xung quanh chúng ta: ô tô, chó, con người, v.v... Tất cả các đối tượng này đều có thuộc tính và hành vi.
+
+Nếu chúng ta xem xét một con chó, thuộc tính của nó sẽ là - tên, giống, màu sắc, và các hành vi là: sủa, vẫy, chạy, cắn...Nếu bạn so sánh các đối tượng trong phần mềm với một đối tượng trong thế giới thực, chúng sẽ có đặc điểm rất giống nhau: thuộc tính đối tượng trong phần mềm được lưu trữ trong trường (field) và hành vi được lưu trữ trong phương thức (method).
+
+Class: Chúng ta có thể xem lớp như một khuôn mẫu (template) của đối tượng (Object). Trong đó bao gồm dữ liệu của đối tượng (fields hay properties) và các phương thức(methods) tác động lên thành phần dữ liệu đó gọi là các phương thức của lớp.
+
+Ví dụ:
+
+
+public class Student{
+   String name;
+   int id;
+   
+   void registerCourse(){
+   }
+    
+   void removeCourse(){
+   }
+ 
+}
+ Cách khai báo:
+
+class<ClassName>
+{
+<kiểudữ liệu> <field_1>;
+<kiểudữ liệu> <field_2>;
+constructor
+method_1
+method_2
+}
+
+class: là từ khóa để khai báo lớp trong Java
+ClassName: là tên chúng ta đặt cho lớp (quy tắc đặt tên: viết hoa mỗi chữ cái đầu)
+field_1, field_2: các thuộc tính, các biến, hay các thành phần dữ liệu của lớp (quy tắc đặt tên: chữ cái đầu tiên viết thường, các chữ cái đầu tiên tiếp theo viết hoa).
+constructor: hàm dùng để khởi tạo đối tượng lớp.
+method_1, method_2: là các phương thức thể hiện các thao tác xử lý, tác động lên các thành phần dữ liệu của lớp.
+Constructor
+
+Mỗi lớp thường có một hàm constructor. Nếu chúng ta không khai báo hàm này rõ ràng trình biên dịch Java sẽ tạo một constructor mặc định cho lớp đó.
+
+Mỗi lần một đối tượng mới được khởi tạo, ít nhất một constructor sẽ được gọi. Nguyên tắc chính của constructor là chúng cần phải có cùng tên với lớp. Một lớp có thể có nhiều hơn một constructor.
+
+Ví dụ:
+
+
+public class Student{
+  public String name;
+ 
+   public Student(){
+   }
+ 
+   public Student(String name){
+      this.name = name;
+   }
+}
+Trong ví dụ trên từ khóa this nhằm chỉ đến chính lớp đang được tham chiếu đến. this.name sẽ tham chiếu đến thuộc tính name của class Student.
+
+Khởi tạo đối tượng (Instance): trong Java để khởi tạo đối tượng chúng ta sử dụng từ khóa new
+
+
+public class Student{
+  public String name;
+ 
+   public Student(String name){
+      this.name = name;
+   }
+   public static void main(String []args){
+     Student s = new Student("Mark");
+     System.out.println(s.name);
+//ket qua in ra Mark
+   }
+}
+ Cách thức truy cập biến và phương thức:
+
+/* Khởi tạo đối tượng */
+
+Object ObjectReference = new Constructor();
+
+/* Gọi biến */
+
+ObjectReference.variableName;
+
+/* Gọi phương thức */
+
+ObjectReference.MethodName();
+
+Case Study
+
+import java.io.*;
+public class Employee{
+   String name;
+   int age;
+   String designation;
+   double salary;
+     
+   // This is the constructor of the class Employee
+   public Employee(String name){
+      this.name = name;
+   }
+   // Assign the age of the Employee  to the variable age.
+   public void empAge(int empAge){
+      age =  empAge;
+   }
+   /* Assign the designation to the variable designation.*/
+   public void empDesignation(String empDesig){
+      designation = empDesig;
+   }
+   /* Assign the salary to the variable salary.*/
+   public void empSalary(double empSalary){
+      salary = empSalary;
+   }
+   /* Print the Employee details */
+   public void printEmployee(){
+      System.out.println("Name:"+ name );
+      System.out.println("Age:" + age );
+      System.out.println("Designation:" + designation );
+      System.out.println("Salary:" + salary);
+   }
+}
+ 
+
+import java.io.*;
+public class EmployeeTest{
+ 
+   public static void main(String args[]){
+      /* Create two objects using constructor */
+      Employee empOne = new Employee("James Smith");
+      Employee empTwo = new Employee("Mary Anne");
+ 
+      // Invoking methods for each object created
+      empOne.empAge(26);
+      empOne.empDesignation("Senior Software Engineer");
+      empOne.empSalary(1000);
+      empOne.printEmployee();
+ 
+      empTwo.empAge(21);
+      empTwo.empDesignation("Software Engineer");
+      empTwo.empSalary(500);
+      empTwo.printEmployee();
+   }
+}
+ Kết quả in ra:
+
+Name:James Smith
+Age:26
+Designation:Senior Software Engineer
+Salary:1000.0
+Name:Mary Anne
+Age:21
+Designation:Software Engineer
+Salary:500.0
